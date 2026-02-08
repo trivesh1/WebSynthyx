@@ -1,0 +1,120 @@
+{
+  "identity": {
+    "name": "WebSynthix",
+    "tagline": "Works With You",
+    "archetype": "Digital Alchemy",
+    "vibe": "Modern, Minimalist, Tech-Forward, Collaborative",
+    "theme_strategy": "Hybrid: Dark Mode (Public Site) / Light Mode (Admin Panel)"
+  },
+  "typography": {
+    "font_family_import": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Manrope:wght@400;500;600&display=swap",
+    "headings": {
+      "family": "Outfit, sans-serif",
+      "weights": ["500", "600", "700"],
+      "style": "Modern, Geometric, Clean"
+    },
+    "body": {
+      "family": "Manrope, sans-serif",
+      "weights": ["400", "500"],
+      "style": "Readable, Humanist"
+    }
+  },
+  "colors": {
+    "primary_gradient": "linear-gradient(135deg, #9D00FF 0%, #FF0080 100%)",
+    "palette": {
+      "public": {
+        "background": "#050505",
+        "surface": "#0A0A0A",
+        "surface_highlight": "#121212",
+        "text_primary": "#FFFFFF",
+        "text_secondary": "#A1A1AA",
+        "accent": "#D946EF",
+        "accent_secondary": "#8B5CF6",
+        "border": "#27272A"
+      },
+      "admin": {
+        "background": "#F8FAFC",
+        "surface": "#FFFFFF",
+        "text_primary": "#0F172A",
+        "text_secondary": "#64748B",
+        "accent": "#7C3AED",
+        "border": "#E2E8F0"
+      }
+    }
+  },
+  "layout_strategies": {
+    "public_site": {
+      "container": "max-w-7xl mx-auto px-6 md:px-12",
+      "spacing": "Generous (py-20 or py-32 for sections)",
+      "grid_system": "Bento Grid (Asymmetric) for Services",
+      "hero_style": "Centered typography with subtle animated background gradient or 3D abstract element"
+    },
+    "admin_panel": {
+      "structure": "Sidebar Navigation (Left) + Main Content Area (Right)",
+      "card_style": "Flat, white background, subtle border, no shadow",
+      "density": "High (Compact tables and lists)"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-white text-black hover:bg-gray-200 rounded-full px-8 py-3 font-medium transition-all",
+      "secondary": "border border-white/20 text-white hover:bg-white/10 rounded-full px-8 py-3 transition-all",
+      "admin_primary": "bg-purple-600 text-white hover:bg-purple-700 rounded-md px-4 py-2"
+    },
+    "cards": {
+      "service_card": "bg-white/5 border border-white/10 backdrop-blur-sm p-8 rounded-2xl hover:border-purple-500/50 transition-colors group",
+      "portfolio_card": "relative overflow-hidden rounded-xl aspect-video group cursor-pointer"
+    },
+    "inputs": {
+      "style": "bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all placeholder:text-white/30"
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1741705424246-0e14ff83f1af?q=80&w=2000&auto=format&fit=crop",
+      "about_team": "https://images.unsplash.com/photo-1630673470267-417e4d361129?q=80&w=1000&auto=format&fit=crop",
+      "service_bg_abstract": "https://images.unsplash.com/photo-1550729154-e3abdffadd93?q=80&w=1000&auto=format&fit=crop",
+      "placeholders": [
+        "https://images.unsplash.com/photo-1690383921891-3f0a7567d815?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1677078610152-8a627d8ced8d?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610702876884-0f8473590287?q=80&w=800&auto=format&fit=crop"
+      ]
+    },
+    "icons": "Lucide React (use thin strokes for elegance)"
+  },
+  "motion": {
+    "library": "framer-motion",
+    "defaults": {
+      "duration": 0.5,
+      "ease": [0.22, 1, 0.36, 1]
+    },
+    "interactions": {
+      "hover": "scale: 1.02, y: -2",
+      "tap": "scale: 0.98"
+    }
+  },
+  "instructions_to_main_agent": [
+    "1. SETUP: Add the Google Fonts link to public/index.html immediately.",
+    "2. THEME: Implement the 'dark' class on the <html> tag for public pages, remove it for /admin routes.",
+    "3. ROUTING: Ensure strict separation between public layout (Footer/Nav) and Admin layout (Sidebar).",
+    "4. MOCK DATA: Use the provided placeholder images for the initial portfolio population.",
+    "5. ADMIN: The admin dashboard must be functional. Use a simple hardcoded check for 'admin@websynthix.com' / 'admin123'.",
+    "6. REVIEWS: Create a 'ReviewCard' component that displays stars (Lucide 'Star' icon) and the user name.",
+    "7. CONTACT: The contact form must actually POST to the backend (even if just logging for MVP).",
+    "8. DO NOT use generic 'lorem ipsum' if possible. Use 'Building the future', 'AI-driven solutions', etc.",
+    "9. CRITICAL: Ensure the 'Services' section uses a CSS Grid (Bento style), not just a flex row."
+  ],
+  "universal_guidelines": {
+    "do_not": [
+      "Use generic centered layouts for everything.",
+      "Use 'Inter' font for headings.",
+      "Use pure black (#000000) backgrounds (use #050505 or #0A0A0A).",
+      "Forget hover states on buttons."
+    ],
+    "must_do": [
+      "Add 'data-testid' to all interactive elements.",
+      "Use 'sonner' for toast notifications.",
+      "Ensure mobile responsiveness (stack grids on mobile)."
+    ]
+  }
+}
