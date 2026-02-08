@@ -1,34 +1,56 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+body {
+  font-family: 'Manrope', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
 }
 
-.App-link {
-    color: #61dafb;
+.dark {
+  background-color: #050505;
+  color: #FFFFFF;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.gradient-text {
+  background: linear-gradient(135deg, #9D00FF 0%, #FF0080 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #9D00FF 0%, #FF0080 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(157, 0, 255, 0.15) 0%, transparent 50%);
+}
+
+.card-hover {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 70, 239, 0.5);
 }
