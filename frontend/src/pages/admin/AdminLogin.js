@@ -211,7 +211,7 @@ import { Lock, Mail } from 'lucide-react';
 
 const BACKEND_URL = process.env.REACT_APP_API;
 const API = `${BACKEND_URL}/api`;
-console.log(API)
+
 
 export default function AdminLogin() {
   const [credentials, setCredentials] = useState({ email: '', password: '' });

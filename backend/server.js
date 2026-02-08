@@ -14,13 +14,16 @@ const JWT_SECRET = process.env.JWT_SECRET; require('dotenv').config();
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-// MongoDB Connection
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017';
-const DB_NAME = process.env.DB_NAME || 'test_database';
+// MongoDB ConnectionA
+// const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017';
+// const DB_NAME = process.env.DB_NAME || 'test_database';
 
-mongoose.connect(`${MONGO_URL}/${DB_NAME}`)
-  .then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+// mongoose.connect(`${MONGO_URL}/${DB_NAME}`)
+//   .then(() => console.log('✅ MongoDB connected'))
+//   .catch(err => console.error('❌ MongoDB connection error:', err));
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch(err => console.error("❌ MongoDB error:", err));
 
 // Models
 const ProjectSchema = new mongoose.Schema({
@@ -165,17 +168,25 @@ app.delete('/api/projects/:id', authenticateToken, async (req, res) => {
 });
 
 // Review Routes
+// app.get('/api/reviews', async (req, res) => {
+//   try {
+//     const { approved } = req.query;
+//     const filter = approved === 'true' ? { approved: true } : {};
+//     const reviews = await Review.find(filter).sort({ createdAt: -1 });
+//     res.json(reviews);
+//   } catch (error) {
+//     res.status(500).json({ error: 'Failed to fetch reviews' });
+//   }
+// });
 app.get('/api/reviews', async (req, res) => {
   try {
-    const { approved } = req.query;
-    const filter = approved === 'true' ? { approved: true } : {};
-    const reviews = await Review.find(filter).sort({ createdAt: -1 });
+    const reviews = await Review.find();
     res.json(reviews);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch reviews' });
+  } catch (err) {
+    console.log("LOCAL REVIEW ERROR:", err);
+    res.status(500).json({ error: err.message });
   }
 });
-
 app.post('/api/reviews', async (req, res) => {
   try {
     const { name, rating, message } = req.body;
