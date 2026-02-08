@@ -2,12 +2,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+   background-color: #1d0c26 !important;
+   color: white;
+ 
 }
 
 body {
+  background-color: #1d0c26 !important;
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dark {
-  background-color: #050505;
+  background-color: #c15c5c;
   color: #FFFFFF;
 }
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -15,7 +16,7 @@ export default function Footer() {
                 alt="WebSynthix Logo" 
                 className="h-10 w-10"
               />
-              <span className="text-xl font-semibold text-white">WebSynthix</span>
+              <span className="text-xl font-semibold text-white gradient-text">WebSynthix</span>
             </div>
             <p className="text-white/60 text-sm mb-6 max-w-md">
               Works With You. We build modern websites, apps & AI solutions that transform your business.
@@ -23,15 +24,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-white/60 text-sm">
                 <Mail size={16} />
-                <span>hello@websynthix.com</span>
+                <span>websynthix@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-white/60 text-sm">
                 <Phone size={16} />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 6307424243</span>
               </div>
               <div className="flex items-center space-x-3 text-white/60 text-sm">
                 <MapPin size={16} />
-                <span>San Francisco, CA</span>
+                <span>Delhi India</span>
               </div>
             </div>
           </div>

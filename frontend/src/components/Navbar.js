@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +36,7 @@ export default function Navbar() {
               alt="WebSynthix Logo" 
               className="h-10 w-10"
             />
-            <span className="text-xl font-semibold text-white">WebSynthix</span>
+            <span className="text-xl font-semibold text-white gradient-text">WebSynthix</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">

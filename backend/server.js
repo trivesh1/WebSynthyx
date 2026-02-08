@@ -7,7 +7,8 @@ require('dotenv').config();
 
 const app = express();
 const PORT = 8001;
-const JWT_SECRET = 'websynthix_secret_key_2026';
+
+const JWT_SECRET = process.env.JWT_SECRET; require('dotenv').config();
 
 // Middleware
 app.use(cors({ origin: '*' }));
@@ -53,21 +54,35 @@ const Review = mongoose.model('Review', ReviewSchema);
 const Contact = mongoose.model('Contact', ContactSchema);
 
 // JWT Middleware
+// const authenticateToken = (req, res, next) => {
+//   const authHeader = req.headers['authorization'];
+//   const token = authHeader && authHeader.split(' ')[1];
+
+//   if (!token) {
+//     return res.status(401).json({ error: 'Access denied. No token provided.' });
+//   }
+
+//   try {
+//     const verified = jwt.verify(token, JWT_SECRET);
+//     req.user = verified;
+//     next();
+//   } catch (err) {
+//     res.status(403).json({ error: 'Invalid token' });
+//   }
+// };
 const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+  const authHeader = req.headers.authorization;
 
-  if (!token) {
-    return res.status(401).json({ error: 'Access denied. No token provided.' });
-  }
 
-  try {
-    const verified = jwt.verify(token, JWT_SECRET);
-    req.user = verified;
+  const token = authHeader && authHeader.split(" ")[1];
+
+  if (!token) return res.status(401).json({ error: "No token" });
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ error: "Invalid token" });
+    req.user = user;
     next();
-  } catch (err) {
-    res.status(403).json({ error: 'Invalid token' });
-  }
+  });
 };
 
 // Routes
@@ -76,9 +91,9 @@ const authenticateToken = (req, res, next) => {
 app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    
     // Hardcoded admin credentials
-    if (email === 'admin@websynthix.com' && password === 'admin123') {
+ if(email === process.env.USER_ID && password === process.env.PASSWORD){
       const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: '24h' });
       return res.json({ success: true, token, message: 'Login successful' });
     }

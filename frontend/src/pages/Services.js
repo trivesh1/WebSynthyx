@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Code, Smartphone, Brain, Palette, Cloud, Zap } from 'lucide-react';
 
+
 export default function Services() {
   const services = [
     {

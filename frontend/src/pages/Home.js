@@ -4,6 +4,7 @@ import { ArrowRight, Code, Smartphone, Brain, Palette, Cloud, Star } from 'lucid
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
@@ -68,7 +69,7 @@ export default function Home() {
               alt="WebSynthix Logo" 
               className="h-24 w-24 mx-auto mb-8"
             />
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-4 gradient-text">
               WebSynthix
             </h1>
             <p className="text-xl sm:text-2xl text-white/80 mb-6 font-medium">

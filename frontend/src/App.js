@@ -10,6 +10,8 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import PublicLayout from './components/PublicLayout';
 import AdminLayout from './components/admin/AdminLayout';
 import ProtectedRoute from './components/ProtectedRoute';
+import "./App.css";
+
 
 function App() {
   return (

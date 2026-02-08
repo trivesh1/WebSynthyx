@@ -2,9 +2,10 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
+
 import { Mail, MessageSquare, User, Star, Send } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_API;
 const API = `${BACKEND_URL}/api`;
 
 export default function Contact() {

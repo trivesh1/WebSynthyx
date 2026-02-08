@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
+
 export default function PublicLayout() {
   useEffect(() => {
     document.documentElement.classList.add('dark');

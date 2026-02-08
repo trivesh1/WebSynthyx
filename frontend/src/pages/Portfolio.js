@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ExternalLink } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
+const BACKEND_URL = process.env.REACT_APP_API;
 const API = `${BACKEND_URL}/api`;
 
 export default function Portfolio() {
