@@ -25,6 +25,7 @@ mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("✅ MongoDB connected"))
   .catch(err => console.error("❌ MongoDB error:", err));
 
+
 // Models
 const ProjectSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
