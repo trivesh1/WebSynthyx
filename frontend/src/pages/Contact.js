@@ -10,8 +10,9 @@ const API = `${BACKEND_URL}/api`;
 
 export default function Contact() {
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
-  const [reviewForm, setReviewForm] = useState({ name: '', rating: 5, message: '' });
+  const [reviewForm, setReviewForm] = useState({ name: '', rating: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
+  const [submitReview,setSubmitReview]=useState(false);
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +30,7 @@ export default function Contact() {
 
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
-    setSubmitting(true);
+    setSubmitReview(true);
     try {
       await axios.post(`${API}/reviews`, reviewForm);
       toast.success('Review submitted! It will appear after approval.');
@@ -37,7 +38,7 @@ export default function Contact() {
     } catch (error) {
       toast.error('Failed to submit review. Please try again.');
     } finally {
-      setSubmitting(false);
+     setSubmitReview(false);
     }
   };
 
@@ -212,10 +213,10 @@ export default function Contact() {
               <button
                 type="submit"
                 data-testid="review-submit-btn"
-                disabled={submitting}
+                disabled={submitReview}
                 className="w-full bg-white text-black hover:bg-gray-200 rounded-full px-8 py-3 font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
               >
-                <span>{submitting ? 'Submitting...' : 'Submit Review'}</span>
+                <span>{submitReview ? 'Submitting...' : 'Submit Review'}</span>
                 <Send size={20} />
               </button>
               <p className="text-white/40 text-xs text-center">Reviews are approved by admin before appearing on the site</p>

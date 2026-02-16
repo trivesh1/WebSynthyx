@@ -240,7 +240,7 @@ export default function AdminLogin() {
 
         <div className="text-center mb-8">
           <img 
-            src="https://customer-assets.emergentagent.com/job_dcbfcb33-f727-4503-be07-af4fc803bc4e/artifacts/318nxd4a_Screenshot%202026-02-07%20at%2010.15.58%E2%80%AFPM.png" 
+            src="/logo.png" 
             alt="WebSynthix Logo" 
             className="h-16 w-16 mx-auto mb-4"
           />

@@ -169,25 +169,25 @@ app.delete('/api/projects/:id', authenticateToken, async (req, res) => {
 });
 
 // Review Routes
-// app.get('/api/reviews', async (req, res) => {
-//   try {
-//     const { approved } = req.query;
-//     const filter = approved === 'true' ? { approved: true } : {};
-//     const reviews = await Review.find(filter).sort({ createdAt: -1 });
-//     res.json(reviews);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to fetch reviews' });
-//   }
-// });
 app.get('/api/reviews', async (req, res) => {
   try {
-    const reviews = await Review.find();
+    const { approved } = req.query;
+    const filter = approved === 'true' ? { approved: true } : {};
+    const reviews = await Review.find(filter).sort({ createdAt: -1 });
     res.json(reviews);
-  } catch (err) {
-    console.log("LOCAL REVIEW ERROR:", err);
-    res.status(500).json({ error: err.message });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch reviews' });
   }
 });
+// app.get('/api/reviews', async (req, res) => {
+//   try {
+//     const reviews = await Review.find();
+//     res.json(reviews);
+//   } catch (err) {
+//     console.log("LOCAL REVIEW ERROR:", err);
+//     res.status(500).json({ error: err.message });
+//   }
+// });
 app.post('/api/reviews', async (req, res) => {
   try {
     const { name, rating, message } = req.body;
