@@ -73,7 +73,7 @@ export default function Portfolio() {
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
                   <p className="text-white/60 text-sm mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.techStack.split(',').map((tech, i) => (
                       <span
                         key={i}
@@ -83,6 +83,17 @@ export default function Portfolio() {
                       </span>
                     ))}
                   </div>
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-2 text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors"
+                    >
+                      <span>Go to Web</span>
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}

@@ -33,6 +33,7 @@ const ProjectSchema = new mongoose.Schema({
   description: { type: String, required: true },
   techStack: { type: String, required: true },
   image: { type: String, required: true },
+  liveLink: { type: String, required: false },
   createdAt: { type: Date, default: Date.now }
 });
 
@@ -120,10 +121,10 @@ app.get('/api/projects', async (req, res) => {
 
 app.post('/api/projects', authenticateToken, async (req, res) => {
   try {
-    const { title, description, techStack, image } = req.body;
+    const { title, description, techStack, image, liveLink } = req.body;
     const id = `proj_${Date.now()}`;
     
-    const project = new Project({ id, title, description, techStack, image });
+    const project = new Project({ id, title, description, techStack, image, liveLink });
     await project.save();
     
     res.status(201).json(project);
@@ -135,11 +136,11 @@ app.post('/api/projects', authenticateToken, async (req, res) => {
 app.put('/api/projects/:id', authenticateToken, async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description, techStack, image } = req.body;
+    const { title, description, techStack, image, liveLink } = req.body;
     
     const project = await Project.findOneAndUpdate(
       { id },
-      { title, description, techStack, image },
+      { title, description, techStack, image, liveLink },
       { new: true }
     );
     

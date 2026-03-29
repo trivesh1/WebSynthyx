@@ -505,7 +505,8 @@ export default function ProjectsTab({ projects, addProject, updateProject, delet
     title: '',
     description: '',
     techStack: '',
-    image: ''
+    image: '',
+    liveLink: ''
   });
 
   const handleSubmit = async (e) => {
@@ -517,7 +518,7 @@ export default function ProjectsTab({ projects, addProject, updateProject, delet
     if (success) {
       setShowModal(false);
       setEditingProject(null);
-      setFormData({ title: '', description: '', techStack: '', image: '' });
+      setFormData({ title: '', description: '', techStack: '', image: '', liveLink: '' });
     }
   };
 
@@ -527,7 +528,8 @@ export default function ProjectsTab({ projects, addProject, updateProject, delet
       title: project.title,
       description: project.description,
       techStack: project.techStack,
-      image: project.image
+      image: project.image,
+      liveLink: project.liveLink || ''
     });
     setShowModal(true);
   };
@@ -535,7 +537,7 @@ export default function ProjectsTab({ projects, addProject, updateProject, delet
   const handleClose = () => {
     setShowModal(false);
     setEditingProject(null);
-    setFormData({ title: '', description: '', techStack: '', image: '' });
+    setFormData({ title: '', description: '', techStack: '', image: '', liveLink: '' });
   };
 
   return (
@@ -574,6 +576,12 @@ export default function ProjectsTab({ projects, addProject, updateProject, delet
               <p className="text-xs text-gray-400 mb-4">
                 {project.techStack}
               </p>
+
+              {project.liveLink && (
+                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="text-purple-400 text-xs mb-4 block hover:text-purple-300 transition-colors">
+                  Visit Live Link
+                </a>
+              )}
 
               <div className="flex space-x-2">
                 <button
@@ -659,6 +667,18 @@ export default function ProjectsTab({ projects, addProject, updateProject, delet
                   value={formData.image}
                   onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                   className="w-full bg-black/30 border border-white/10 rounded-md px-4 py-2 text-white outline-none focus:ring focus:ring-purple-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-white text-sm font-medium mb-2">Live Link (Optional)</label>
+                <input
+                  data-testid="project-livelink-input"
+                  type="url"
+                  value={formData.liveLink || ''}
+                  onChange={(e) => setFormData({ ...formData, liveLink: e.target.value })}
+                  className="w-full bg-black/30 border border-white/10 rounded-md px-4 py-2 text-white outline-none focus:ring focus:ring-purple-500"
+                  placeholder="https://example.com"
                 />
               </div>
 

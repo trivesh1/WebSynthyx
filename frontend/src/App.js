@@ -10,6 +10,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import PublicLayout from './components/PublicLayout';
 import AdminLayout from './components/admin/AdminLayout';
 import ProtectedRoute from './components/ProtectedRoute';
+import ScrollToTop from './pages/ScrollToTop';
 import "./App.css";
 
 
@@ -17,9 +18,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <ScrollToTop/>
         <Routes>
           <Route element={<PublicLayout />}>
-            <Route path="/" element={<Home />} />
+            <Route path="/"  element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/portfolio" element={<Portfolio />} />
